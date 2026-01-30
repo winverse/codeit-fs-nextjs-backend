@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "allowJs": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "paths": {
+      "#*": ["./src/*"]
+    }
+  },
+  "include": ["./src/"]
+}
