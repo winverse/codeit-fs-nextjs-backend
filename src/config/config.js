@@ -1,9 +1,9 @@
-import { z, flattenError } from "zod";
+import { z, flattenError } from 'zod';
 
 const envSchema = z.object({
   NODE_ENV: z
-    .enum(["development", "production", "test"])
-    .default("development"),
+    .enum(['development', 'production', 'test'])
+    .default('development'),
   PORT: z.coerce.number().min(1000).max(65535).default(4000),
   DATABASE_URL: z.url(),
   TMDB_API_KEY: z.string().min(1),
@@ -22,7 +22,7 @@ const parseEnvironment = () => {
   } catch (error) {
     if (error instanceof z.ZodError) {
       const { fieldErrors } = flattenError(error);
-      console.error("환경 변수 검증 실패:", fieldErrors);
+      console.error('환경 변수 검증 실패:', fieldErrors);
     }
     process.exit(1);
   }
@@ -30,6 +30,6 @@ const parseEnvironment = () => {
 
 export const config = parseEnvironment();
 
-export const isDevelopment = config.NODE_ENV === "development";
-export const isProduction = config.NODE_ENV === "production";
-export const isTest = config.NODE_ENV === "test";
+export const isDevelopment = config.NODE_ENV === 'development';
+export const isProduction = config.NODE_ENV === 'production';
+export const isTest = config.NODE_ENV === 'test';

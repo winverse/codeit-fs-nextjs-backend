@@ -1,21 +1,21 @@
-import express from "express";
-import { tmdbService } from "#services";
-import { movieRepository, reviewRepository } from "#repository";
-import { HTTP_STATUS, ERROR_MESSAGE } from "#constants";
-import { validate } from "#middlewares";
-import { NotFoundException } from "#exceptions";
+import express from 'express';
+import { tmdbService } from '#services';
+import { movieRepository, reviewRepository } from '#repository';
+import { HTTP_STATUS, ERROR_MESSAGE } from '#constants';
+import { validate } from '#middlewares';
+import { NotFoundException } from '#exceptions';
 import {
   paginationQuerySchema,
   searchQuerySchema,
   movieIdParamSchema,
   createReviewSchema,
-} from "./movies.schema.js";
+} from './movies.schema.js';
 
 export const moviesRouter = express.Router();
 
 moviesRouter.get(
-  "/",
-  validate("query", paginationQuerySchema),
+  '/',
+  validate('query', paginationQuerySchema),
   async (req, res, next) => {
     try {
       const { page } = req.query;
@@ -28,8 +28,8 @@ moviesRouter.get(
 );
 
 moviesRouter.get(
-  "/search",
-  validate("query", searchQuerySchema),
+  '/search',
+  validate('query', searchQuerySchema),
   async (req, res, next) => {
     try {
       const { q, page } = req.query;
@@ -42,8 +42,8 @@ moviesRouter.get(
 );
 
 moviesRouter.get(
-  "/:id",
-  validate("params", movieIdParamSchema),
+  '/:id',
+  validate('params', movieIdParamSchema),
   async (req, res, next) => {
     try {
       const { id } = req.params; // TMDB ID
@@ -62,7 +62,7 @@ moviesRouter.get(
         reviews,
       });
     } catch (error) {
-      if (error.message?.includes("TMDB")) {
+      if (error.message?.includes('TMDB')) {
         return next(new NotFoundException(ERROR_MESSAGE.MOVIE_NOT_FOUND));
       }
       next(error);
@@ -71,8 +71,8 @@ moviesRouter.get(
 );
 
 moviesRouter.get(
-  "/:id/reviews",
-  validate("params", movieIdParamSchema),
+  '/:id/reviews',
+  validate('params', movieIdParamSchema),
   async (req, res, next) => {
     try {
       const { id } = req.params; // TMDB ID
@@ -85,9 +85,9 @@ moviesRouter.get(
 );
 
 moviesRouter.post(
-  "/:id/reviews",
-  validate("params", movieIdParamSchema),
-  validate("body", createReviewSchema),
+  '/:id/reviews',
+  validate('params', movieIdParamSchema),
+  validate('body', createReviewSchema),
   async (req, res, next) => {
     try {
       const { id: tmdbId } = req.params;
@@ -118,8 +118,8 @@ moviesRouter.post(
 );
 
 moviesRouter.get(
-  "/:id/recommendations",
-  validate("params", movieIdParamSchema),
+  '/:id/recommendations',
+  validate('params', movieIdParamSchema),
   async (req, res, next) => {
     try {
       const { id } = req.params;

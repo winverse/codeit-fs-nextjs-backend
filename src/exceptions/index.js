@@ -3,4 +3,4 @@ export {
   NotFoundException,
   BadRequestException,
   InternalServerException,
-} from "./http.exception.js";
+} from './http.exception.js';

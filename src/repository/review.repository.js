@@ -1,4 +1,4 @@
-import { prisma } from "#db/prisma.js";
+import { prisma } from '#db/prisma.js';
 
 // 특정 영화(TMDB ID 기준)의 리뷰 목록 조회
 function findByMovieId(tmdbId) {
@@ -8,7 +8,7 @@ function findByMovieId(tmdbId) {
         tmdbId: Number(tmdbId),
       },
     },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
   });
 }
 

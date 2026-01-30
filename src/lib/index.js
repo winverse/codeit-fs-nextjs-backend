@@ -1,1 +1,1 @@
-export * from "./tmdb.client.js";
+export * from './tmdb.client.js';

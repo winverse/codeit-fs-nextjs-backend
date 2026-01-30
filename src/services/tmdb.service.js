@@ -1,4 +1,4 @@
-import { tmdbClient } from "../lib/tmdb.client.js";
+import { tmdbClient } from '../lib/tmdb.client.js';
 
 // 영화 데이터 변환 (목록용)
 function transformMovie(movie) {
@@ -36,7 +36,7 @@ function transformMovieDetail(movie) {
 
 // 인기 영화 목록 조회
 async function getPopularMovies(page = 1) {
-  const data = await tmdbClient.get("/movie/popular", { page });
+  const data = await tmdbClient.get('/movie/popular', { page });
   return {
     movies: data.results.map(transformMovie),
     page: data.page,
@@ -47,7 +47,7 @@ async function getPopularMovies(page = 1) {
 
 // 영화 검색
 async function searchMovies(query, page = 1) {
-  const data = await tmdbClient.get("/search/movie", { query, page });
+  const data = await tmdbClient.get('/search/movie', { query, page });
   return {
     movies: data.results.map(transformMovie),
     page: data.page,

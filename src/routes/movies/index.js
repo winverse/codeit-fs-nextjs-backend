@@ -1,6 +1,6 @@
-import express from "express";
-import { moviesRouter } from "./movies.routes.js";
+import express from 'express';
+import { moviesRouter } from './movies.routes.js';
 
 export const movieRouter = express.Router();
 
-movieRouter.use("/", moviesRouter);
+movieRouter.use('/', moviesRouter);

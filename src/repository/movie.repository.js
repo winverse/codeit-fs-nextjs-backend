@@ -1,4 +1,4 @@
-import { prisma } from "#db/prisma.js";
+import { prisma } from '#db/prisma.js';
 
 // TMDB ID로 영화 조회
 function findByTmdbId(tmdbId) {

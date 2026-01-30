@@ -1,4 +1,4 @@
-import { config } from "#config";
+import { config } from '#config';
 
 const { TMDB_API_KEY, TMDB_BASE_URL } = config;
 
@@ -10,8 +10,8 @@ const { TMDB_API_KEY, TMDB_BASE_URL } = config;
  */
 async function get(endpoint, params = {}) {
   const url = new URL(`${TMDB_BASE_URL}${endpoint}`);
-  url.searchParams.set("api_key", TMDB_API_KEY);
-  url.searchParams.set("language", "ko-KR");
+  url.searchParams.set('api_key', TMDB_API_KEY);
+  url.searchParams.set('language', 'ko-KR');
 
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.set(key, value);

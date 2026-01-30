@@ -1,1 +1,1 @@
-export { tmdbService } from "./tmdb.service.js";
+export { tmdbService } from './tmdb.service.js';

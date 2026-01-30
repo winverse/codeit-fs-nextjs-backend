@@ -1,9 +1,9 @@
-import { HTTP_STATUS } from "#constants";
-import { HttpException } from "#exceptions";
-import { isDevelopment } from "#config";
+import { HTTP_STATUS } from '#constants';
+import { HttpException } from '#exceptions';
+import { isDevelopment } from '#config';
 
 export const errorHandler = (err, _req, res, _next) => {
-  console.error("Error:", err);
+  console.error('Error:', err);
 
   if (err instanceof HttpException) {
     return res.status(err.statusCode).json({
@@ -13,7 +13,7 @@ export const errorHandler = (err, _req, res, _next) => {
   }
 
   return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
-    error: "서버 내부 오류가 발생했습니다.",
+    error: '서버 내부 오류가 발생했습니다.',
     ...(isDevelopment && { stack: err.stack }),
   });
 };

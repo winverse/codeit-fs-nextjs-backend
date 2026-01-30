@@ -1,10 +1,10 @@
-import { ERROR_MESSAGE } from "#constants";
-import { BadRequestException } from "#exceptions";
-import { flattenError } from "zod";
-import { isProduction } from "#config";
+import { ERROR_MESSAGE } from '#constants';
+import { BadRequestException } from '#exceptions';
+import { flattenError } from 'zod';
+import { isProduction } from '#config';
 
 export const validate = (target, schema) => {
-  if (!["body", "query", "params"].includes(target)) {
+  if (!['body', 'query', 'params'].includes(target)) {
     throw new Error(
       `[validate middleware] Invalid target: "${target}". Expected "body", "query", or "params".`,
     );
