@@ -45,6 +45,17 @@ async function getPopularMovies(page = 1) {
   };
 }
 
+// 현재 상영중 영화 목록 조회
+async function getNowPlayingMovies(page = 1) {
+  const data = await tmdbClient.get('/movie/now_playing', { page });
+  return {
+    movies: data.results.map(transformMovie),
+    page: data.page,
+    totalPages: data.total_pages,
+    totalResults: data.total_results,
+  };
+}
+
 // 영화 검색
 async function searchMovies(query, page = 1) {
   const data = await tmdbClient.get('/search/movie', { query, page });
@@ -69,6 +80,7 @@ async function getRecommendations(id) {
 }
 
 export const tmdbService = {
+  getNowPlayingMovies,
   getPopularMovies,
   searchMovies,
   getMovieDetail,

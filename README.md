@@ -62,14 +62,15 @@ npm run dev
 
 ## API 엔드포인트
 
-| Method | Endpoint                          | 설명                |
-| ------ | --------------------------------- | ------------------- |
-| GET    | `/api/movies`                     | 인기 영화 목록      |
-| GET    | `/api/movies/search?q=검색어`     | 영화 검색           |
-| GET    | `/api/movies/:id`                 | 영화 상세 + 리뷰    |
-| GET    | `/api/movies/:id/reviews`         | 특정 영화 리뷰 목록 |
-| POST   | `/api/movies/:id/reviews`         | 리뷰 작성           |
-| GET    | `/api/movies/:id/recommendations` | 추천 영화           |
+| Method | Endpoint                          | 설명                  |
+| ------ | --------------------------------- | --------------------- |
+| GET    | `/api/movies`                     | 인기 영화 목록        |
+| GET    | `/api/movies/now-playing`         | 현재 상영중 영화 목록 |
+| GET    | `/api/movies/search?q=검색어`     | 영화 검색             |
+| GET    | `/api/movies/:id`                 | 영화 상세 + 리뷰      |
+| GET    | `/api/movies/:id/reviews`         | 특정 영화 리뷰 목록   |
+| POST   | `/api/movies/:id/reviews`         | 리뷰 작성             |
+| GET    | `/api/movies/:id/recommendations` | 추천 영화             |
 
 ## 프로젝트 구조
 

@@ -46,10 +46,14 @@ export const movieIdParamSchema = registry.register(
 export const createReviewSchema = registry.register(
   'CreateReview',
   z.object({
-    content: z.string().min(1, '리뷰 내용을 입력해주세요.').max(1000).openapi({
-      example: '정말 재미있는 영화였어요!',
-      description: '리뷰 내용',
-    }),
+    content: z
+      .string()
+      .min(1, '리뷰 내용을 입력해주세요.')
+      .max(1000)
+      .openapi({
+        example: '정말 재미있는 영화였어요!',
+        description: '리뷰 내용',
+      }),
     rating: z
       .number()
       .int()
@@ -103,6 +107,28 @@ registry.registerPath({
   responses: {
     200: {
       description: '인기 영화 목록',
+      content: {
+        'application/json': {
+          schema: z.object({
+            movies: z.array(movieSchema),
+          }),
+        },
+      },
+    },
+  },
+});
+
+registry.registerPath({
+  method: 'get',
+  path: '/api/movies/now-playing',
+  summary: '현재 상영중 영화 목록 조회',
+  tags: ['Movies'],
+  request: {
+    query: paginationQuerySchema,
+  },
+  responses: {
+    200: {
+      description: '현재 상영중 영화 목록',
       content: {
         'application/json': {
           schema: z.object({

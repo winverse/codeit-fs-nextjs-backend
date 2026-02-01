@@ -28,6 +28,20 @@ moviesRouter.get(
 );
 
 moviesRouter.get(
+  '/now-playing',
+  validate('query', paginationQuerySchema),
+  async (req, res, next) => {
+    try {
+      const { page } = req.query;
+      const result = await tmdbService.getNowPlayingMovies(page);
+      res.status(HTTP_STATUS.OK).json(result);
+    } catch (error) {
+      next(error);
+    }
+  },
+);
+
+moviesRouter.get(
   '/search',
   validate('query', searchQuerySchema),
   async (req, res, next) => {
